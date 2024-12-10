@@ -1,10 +1,10 @@
-const entradaTexto = document.getElementById('entradaTexto');
-const btnAdicionar = document.getElementById('btnAdicionar');
-const btnContar = document.getElementById('btnContar');
-const saida = document.getElementById('saida');
-const dialogo = document.getElementById('dialogo');
-const msgDialogo = document.getElementById('msgDialogo');
-const btnFechar = document.getElementById('btnFechar');
+const entradaTexto = document.getElementById('textInput');
+const btnAdicionar = document.getElementById('addButton');
+const btnContar = document.getElementById('countButton');
+const saida = document.getElementById('output');
+const dialogo = document.getElementById('lineDialog');
+const msgDialogo = document.getElementById('dialogMessage');
+const btnFechar = document.getElementById('closeDialog');
 
 btnAdicionar.addEventListener('click', () => {
     const texto = entradaTexto.value.trim();
@@ -19,14 +19,8 @@ btnAdicionar.addEventListener('click', () => {
 });
 
 btnContar.addEventListener('click', () => {
-    if (saida.innerHTML.trim() === '') {
-        msgDialogo.textContent = "Nenhuma linha foi adicionada.";
-    } else {
-        const alturaLinha = parseFloat(getComputedStyle(saida).lineHeight);
-        const alturaTotal = saida.scrollHeight;
-        const linhas = Math.ceil(alturaTotal / alturaLinha);
-        msgDialogo.textContent = `${linhas} linha(s) foram adicionadas.`;
-    }
+    const linhas = saida.getElementsByTagName('p').length;
+    msgDialogo.textContent = `${linhas} linha(s) foram adicionadas.`;
     dialogo.showModal();
 });
 
